@@ -1,0 +1,11 @@
+{
+  "name": "code-practice",
+  "version": "1.0.0",
+  "description": "practice",
+  "main": "main.ts",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "moonfly",
+  "license": "ISC"
+}
