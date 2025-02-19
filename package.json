@@ -1,11 +1,23 @@
 {
   "name": "code-practice",
-  "version": "1.0.0",
-  "description": "practice",
-  "main": "main.ts",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "test": "test"
+    "code": "npx tsx",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "check": "svelte-check --tsconfig ./tsconfig.app.json && tsc -p tsconfig.node.json"
   },
-  "author": "moonfly",
-  "license": "ISC"
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^5.0.3",
+    "@tsconfig/svelte": "^5.0.4",
+    "esm": "^3.2.25",
+    "svelte": "^5.19.6",
+    "svelte-check": "^4.1.4",
+    "ts-node": "^10.9.2",
+    "typescript": "~5.7.2",
+    "vite": "^6.1.0"
+  }
 }
