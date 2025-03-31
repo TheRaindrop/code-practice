@@ -30,12 +30,34 @@
 
  */
 
+// function maxSubArray(nums: number[]): number {
+//   let preSum: number = nums[0];
+//   let sum = nums[0];
+//   for (let i = 1; i < nums.length; i++) {
+//     console.log('-----第 ', i, '次: ', sum, nums[i], '---', preSum);
+//     if (sum + nums[i] > sum) {
+//       sum = sum + nums[i];
+//     } else {
+//       preSum = Math.max(preSum, sum);
+//       sum = nums[i];
+//     }
+//   }
+
+//   return Math.max(preSum, sum);
+// }
+
 function maxSubArray(nums: number[]): number {
   let pre = nums[0],
-    maxSum = nums[0];
-  nums.forEach((x) => {
-    pre = Math.max(pre + x, x);
-    maxSum = Math.max(pre, maxSum);
-  });
-  return maxSum;
+    max = nums[0];
+  for (let i = 1; i < nums.length; i++) {
+    pre = Math.max(pre + nums[i], nums[i]);
+    max = Math.max(pre, max);
+  }
+  return max;
 }
+
+// case 1
+const nums = [-2, 1, -3, 4, -1, 2, 1, -5, 4];
+// 输出：6
+
+console.log(maxSubArray(nums));

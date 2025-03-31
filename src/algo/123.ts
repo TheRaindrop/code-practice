@@ -23,19 +23,33 @@
  */
 function maxProfit(prices: number[]): number {
   const days = prices.length;
-  const dp = new Array(days).fill(0).map(() => new Array(2).fill(0));
+  let buy1 = -prices[0];
+  let sell1 = 0;
 
-  const buy1: number[] = [];
-  const sell1: number[] = [];
-  const buy2: number[] = [];
-  const sell2: number[] = [];
+  let buy2 = -prices[0];
+  let sell2 = 0;
 
-  let n = 10;
-  buy1[n] = Math.max(buy1[n - 1], -prices[n]);
-  sell1[n] = Math.max(sell1[n - 1], buy1[n - 1] + prices[n]);
-  buy2[n] = Math.max(buy2[n - 1], sell1[n - 1] + prices[n]);
-  sell2[n] = Math.max(sell2[n - 1], buy2[n - 1] + prices[n]);
+  for (let i = 1; i < days; i++) {
+    buy1 = Math.max(buy1, -prices[i]);
+    sell1 = Math.max(sell1, buy1 + prices[i]);
 
-  dp[0][0] = 0;
-  dp[0][1] = -prices[0];
+    buy2 = Math.max(buy2, sell1 - prices[i]);
+    sell2 = Math.max(sell2, buy2 + prices[i]);
+  }
+
+  return sell2;
 }
+
+// case 1
+// const prices = [3, 3, 5, 0, 0, 3, 1, 4];
+// 输出：6
+
+// case 2
+// const prices = [1, 2, 3, 4, 5];
+// 输出：4
+
+// case 3
+const prices = [7, 6, 4, 3, 1];
+// 输出 0
+
+console.log(maxProfit(prices));

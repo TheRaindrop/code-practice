@@ -24,3 +24,18 @@ function getPackage(
 ) {
   const dp = new Array(itemList.length).fill(0).map;
 }
+
+
+function curry(fn) {
+  const len = fn.length;
+
+  return function curried(...args) {
+    if (args.length >= len) {
+      return fn.apply(args);
+    } else {
+      return function (...args2) {
+        return curried.apply(this, args.concat(args2));
+      };
+    }
+  };
+}
